@@ -4,8 +4,7 @@ import streamlit as st
 import pandas as pd 
 from pandasai import SmartDataframe
 from pandasai.llm.openai import OpenAI
-import chardet
-from io import BytesIO
+import time
 
 load_dotenv()
 
@@ -58,6 +57,8 @@ if uploaded_file is not None:
     prompt = st.text_area("Enter your prompt")
 
     if st.button("Generate"):
+        start_time = time.time()
+
         if prompt:
             st.write("PandasAI is generating an answer, please wait...")
             query_engine = SmartDataframe(df, config={"llm": llm})
@@ -65,3 +66,8 @@ if uploaded_file is not None:
             st.write(answer)
         else:
             st.warning("Please enter a prompt.")
+        end_time = time.time()
+
+        execution_time = end_time - start_time
+
+        st.write(f"코드실행 시간: {execution_time:.1f}초")

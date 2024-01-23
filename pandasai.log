@@ -63,3 +63,1276 @@ result = {'type': 'number', 'value': average_ad_cost}
 2024-01-23 14:56:35 [INFO] Answer: {'type': 'number', 'value': 1089.688581314879}
 2024-01-23 14:56:35 [INFO] Executed in: 8.906922578811646s
 2024-01-23 14:56:35 [INFO] Executing Step 6: ResultParsing
+2024-01-23 15:24:55 [INFO] Question: 사티아 키워드 데이터를 모두 보여줘
+2024-01-23 15:24:55 [INFO] Running PandasAI with openai LLM...
+2024-01-23 15:24:55 [INFO] Prompt ID: 9b5fb137-fff6-43e3-9375-f25368d18ddf
+2024-01-23 15:24:56 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 289 rows and 7 columns.
+This is the metadata of the dataframe dfs[0]:
+키워드,경쟁도,쇼핑전환율,광고비,검색수,상품수,평균가
+별달우주집들이,1318.7,0.0,70,20,26374,65900
+청룡달마도,0.11,5.73,70,7700,863,41000
+살바도르달리,0.67,0.0,70,17120,11576,34430
+</dataframe>
+
+<conversation>
+User: 사티아 키워드 데이터를 모두 보여줘
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-01-23 15:25:16 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-01-23 15:25:16 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Extract the keyword column from the first dataframe
+    keywords = dfs[0]['키워드']
+    
+    # Convert the keywords to a string and return the result
+    result = ', '.join(keywords)
+    return {"type": "string", "value": result}
+```
+
+2024-01-23 15:25:16 [INFO] Saving charts to C:\Users\cuckoo\interpreter\PandasAI\temp_chart.png
+2024-01-23 15:25:16 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in C:/Users/cuckoo/interpreter/PandasAI/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "C:/Users/cuckoo/interpreter/PandasAI/temp_chart.png" }
+    """
+    keywords = dfs[0]['키워드']
+    result = ', '.join(keywords)
+    return {'type': 'string', 'value': result}
+        ```
+2024-01-23 15:25:16 [INFO] Answer: {'type': 'string', 'value': '별달우주집들이, 살바도르달리, 청룡달마도, 그로밋옷, 젤리곰무드등, 디퓨저2개, 무선led벽시계, 그랑핸드, 다람쥐오너먼트, 크리스마스기차오르골, 눈내리는가로등, 이케아조명, 교보문고디퓨저, 코스트코회전목마오르골, 10cm인형옷, 크리스탈오너먼트, 모루인형소품, 액막이명태, 캘시퍼무드등, 별자리인형, 뻐꾸기시계, 코스트코크리스마스오르골, 위메이크페인팅, 벽난로모형, 워터볼, 피포페인팅, 솜인형, 작호도, 불멍무드등, 산타마리아노벨라왁스타블렛, 유리오너먼트, 무아스led시계, 사티아, 크리스마스트리오르골, 크리스마스센터피스, 타공파티션, 모던하우스크리스마스, 초마루디퓨저, 자작나무트리, 부케말리기선물, 북눅, 스노우볼오르골, 지브리오르골, 코스트코회전목마, 크리스마스디퓨저, 헤트라스디퓨저, 치이카와인형, 샤넬스노우볼, 대림절초, 패브릭트리, 호두까기인형, 벽걸이트리, 쿤달디퓨저, 지네전구1000구, 트리오르골, 지네전구400구, 인형옷, 회전목마오르골, 솔방울, 산타오르골, 지네전구, 오너먼트, 코코도르, 꽃병, 에이센트, 우주인무드등, 우주큐브, 무속성솜인형, led촛불, led초, diy명화그리기, 다이소액자, 캔들워머, 크리스마스워터볼, 달항아리, 유화그리기세트, 드림캐쳐, 루돌프인형, 현관종, 크리스마스오브제, 두꺼비집가리개, 크리스마스미니어처, 유리화병, 스마트디퓨저, 오크통, 오르골, 셀프가벽, 가림막파티션, 풍경, 미니어처하우스, 스톤디퓨저, 일광전구, 와이어전구, 양키캔들워머, 크리스마스패브릭, 코스트코오르골, 크리스마스, 크리스마스액자, 크리스마스패브릭포스터, 조말론디퓨저, 명화그리기, 크리스마스캔들, 트리장식품, 캔들홀더, 모래시계, 벽걸이led시계, 인센스스틱홀더, 크리스마스스노우볼, 코코도르디퓨저, 에디슨전구, 오로라무드등, 스노우볼만들기, 미니어쳐, 시계, 크리스마스무드등, 도어벨, 촛대, 거실시계, 알람시계, 벽걸이전자시계, 오르골만들기, 달항아리그림, 거실벽시계, 종이액자, 크리스마스오너먼트, 크리스마스오르골, 엔틱벽시계, 스노우볼, 크리스마스포스터, 마크라메, 인테리어벽시계, 공간분리파티션, 루이스폴센, 크리스마스벽장식, 크리스마스초, 인센스, 벽난로무드등, 우주무드등, 버섯조명, 미러볼, 크리스마스led, 형광등, 미니어처만들기, 무선센서등, 인테리어시계, 크리스마스리스, 양키캔들, 크리스마스소품, 원목파티션, 인센스홀더, 우체통, 가벽파티션, 태양광센서등, led형광등, 향초, 태양열조명, 미니어처, 스마트폰사진인화, 낮은파티션, 디퓨저리필, 파티라이트, 인테리어소품, 식탁등인테리어, 패브릭포스터, 인센스스틱, 욕실등, 무소음탁상시계, 거실스탠드조명, 양초, t5, 인테리어파티션, 수유등, 실내용디퓨저, 크리스마스장식, led벽시계, 장스탠드조명, 단스탠드, 독서등, 전구, t5조명, 방향제디퓨저, 욕실시계, 태양열정원등, 다운라이트, 식물led, 수면등, 무소음벽시계, 원목액자, 대용량디퓨저, led모듈, 가벽, 거실등, 국산led거실등, 액자프레임, 간접조명, 그림, 해바라기그림, 크리스마스조명, 사진인화, 화병, a2액자, 앵두전구, 식물등, 해바라기액자, 접이식파티션, 레일등, 복주머니, 식탁등, 인테리어포스터, 줄조명, 방향제, led방등, 냉장고자석, led센서등, 벽조명, 현관센서등, 주방등, led바, 주방조명, 장스탠드, led전구, 캔들, 인테리어그림, 펜던트조명, 나무액자, 인테리어액자, 거실led등, 디퓨저추천, 센서등, 트리전구, 스탠드조명, 스탠드, 직부등, 거실액자, 방등, 트리조명, 실내디퓨저, 벽시계, 전자벽시계, led탁상시계, 벽걸이시계, 미니간판, 공장등, 석고방향제, 샹들리에, 그림액자, 탁상시계, 디지털벽시계, 철제파티션, led라인조명, led거실등, 실내방향제, 식탁조명, led등, 디퓨져, led조명, led주방등, 무드등, 디퓨저, 이동식파티션, 레일조명, 인테리어조명, led시계, 그림그리기, 전등, 알루미늄액자, 크리스마스선물, 크리스마스트리, 캔버스액자, 미슬토, 집들이선물, 돌출간판, 연말선물, 액자, 디지털시계, 벽등, 조명, 네온사인, 사진액자, 라인조명, 포스터, 현판, 아크릴간판, 우편함, 칸막이, 아크릴액자, 개업선물, led간판, 파티션'}
+2024-01-23 15:25:16 [INFO] Executed in: 20.300421714782715s
+2024-01-23 15:25:42 [INFO] Question: 사티아 키워드의 경쟁도 알려줘
+2024-01-23 15:25:42 [INFO] Running PandasAI with openai LLM...
+2024-01-23 15:25:42 [INFO] Prompt ID: 41b6b978-1ccd-4584-8b8d-140c58fc7402
+2024-01-23 15:25:42 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 289 rows and 7 columns.
+This is the metadata of the dataframe dfs[0]:
+키워드,경쟁도,쇼핑전환율,광고비,검색수,상품수,평균가
+살바도르달리,0.67,0.0,70,17120,11576,34430
+별달우주집들이,1318.7,0.0,70,20,26374,65900
+청룡달마도,0.11,5.73,70,7700,863,41000
+</dataframe>
+
+<conversation>
+User: 사티아 키워드의 경쟁도 알려줘
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-01-23 15:25:42 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2024-01-23 15:25:47 [INFO] Question: 사티아 키워드의 경쟁도 알려줘
+2024-01-23 15:25:47 [INFO] Running PandasAI with openai LLM...
+2024-01-23 15:25:47 [INFO] Prompt ID: 95cbd152-b24e-4ad4-9fc7-3449dbc4694d
+2024-01-23 15:25:47 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 289 rows and 7 columns.
+This is the metadata of the dataframe dfs[0]:
+키워드,경쟁도,쇼핑전환율,광고비,검색수,상품수,평균가
+별달우주집들이,1318.7,0.0,70,20,26374,65900
+살바도르달리,0.67,0.0,70,17120,11576,34430
+청룡달마도,0.11,5.73,70,7700,863,41000
+</dataframe>
+
+<conversation>
+User: 사티아 키워드의 경쟁도 알려줘
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-01-23 15:25:48 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2024-01-23 15:26:00 [INFO] Question: 사티아 키워드의 경쟁도 알려줘
+2024-01-23 15:26:00 [INFO] Running PandasAI with openai LLM...
+2024-01-23 15:26:00 [INFO] Prompt ID: 23e8c608-2992-41f0-878e-3a346036ec1c
+2024-01-23 15:26:01 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 289 rows and 7 columns.
+This is the metadata of the dataframe dfs[0]:
+키워드,경쟁도,쇼핑전환율,광고비,검색수,상품수,평균가
+살바도르달리,0.67,0.0,70,17120,11576,34430
+청룡달마도,0.11,5.73,70,7700,863,41000
+별달우주집들이,1318.7,0.0,70,20,26374,65900
+</dataframe>
+
+<conversation>
+User: 사티아 키워드의 경쟁도 알려줘
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-01-23 15:26:01 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2024-01-23 15:26:17 [INFO] Question: 사티아 키워드의 경쟁도 알려줘
+2024-01-23 15:26:17 [INFO] Running PandasAI with openai LLM...
+2024-01-23 15:26:17 [INFO] Prompt ID: 3f07ae71-9893-4ea1-9046-72c3990c2a20
+2024-01-23 15:26:17 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 289 rows and 7 columns.
+This is the metadata of the dataframe dfs[0]:
+키워드,경쟁도,쇼핑전환율,광고비,검색수,상품수,평균가
+청룡달마도,0.11,5.73,70,7700,863,41000
+별달우주집들이,1318.7,0.0,70,20,26374,65900
+살바도르달리,0.67,0.0,70,17120,11576,34430
+</dataframe>
+
+<conversation>
+User: 사티아 키워드의 경쟁도 알려줘
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-01-23 15:26:17 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2024-01-23 15:27:13 [INFO] Question: 쇼핑 전환율 평균 알려줘
+2024-01-23 15:27:13 [INFO] Running PandasAI with openai LLM...
+2024-01-23 15:27:13 [INFO] Prompt ID: c97ec4c0-423a-4bcf-b5a5-5a65f83b84b8
+2024-01-23 15:27:13 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 289 rows and 7 columns.
+This is the metadata of the dataframe dfs[0]:
+키워드,경쟁도,쇼핑전환율,광고비,검색수,상품수,평균가
+청룡달마도,0.11,5.73,70,7700,863,41000
+별달우주집들이,1318.7,0.0,70,20,26374,65900
+살바도르달리,0.67,0.0,70,17120,11576,34430
+</dataframe>
+
+<conversation>
+User: 쇼핑 전환율 평균 알려줘
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-01-23 15:27:13 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2024-01-23 15:28:24 [INFO] Question: 쇼핑전환율 평균 알려줘
+2024-01-23 15:28:24 [INFO] Running PandasAI with openai LLM...
+2024-01-23 15:28:24 [INFO] Prompt ID: 0e18a00f-db18-4b72-b60e-bcc543adaf5e
+2024-01-23 15:28:24 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 289 rows and 7 columns.
+This is the metadata of the dataframe dfs[0]:
+키워드,경쟁도,쇼핑전환율,광고비,검색수,상품수,평균가
+살바도르달리,0.67,0.0,70,17120,11576,34430
+별달우주집들이,1318.7,0.0,70,20,26374,65900
+청룡달마도,0.11,5.73,70,7700,863,41000
+</dataframe>
+
+<conversation>
+User: 쇼핑전환율 평균 알려줘
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-01-23 15:28:24 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2024-01-23 15:29:24 [INFO] Question: 쇼핑전환율 평균 알려줘
+2024-01-23 15:29:24 [INFO] Running PandasAI with openai LLM...
+2024-01-23 15:29:24 [INFO] Prompt ID: 5b74dc46-c626-49f8-88cb-41e3e26bc06d
+2024-01-23 15:29:24 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 289 rows and 7 columns.
+This is the metadata of the dataframe dfs[0]:
+키워드,경쟁도,쇼핑전환율,광고비,검색수,상품수,평균가
+별달우주집들이,1318.7,0.0,70,20,26374,65900
+살바도르달리,0.67,0.0,70,17120,11576,34430
+청룡달마도,0.11,5.73,70,7700,863,41000
+</dataframe>
+
+<conversation>
+User: 쇼핑전환율 평균 알려줘
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-01-23 15:29:24 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2024-01-23 15:30:35 [INFO] Question: 쇼핑전환율 평균 알려줘
+2024-01-23 15:30:35 [INFO] Running PandasAI with openai LLM...
+2024-01-23 15:30:35 [INFO] Prompt ID: f9cc30a2-5e4d-4c16-b709-fbcaf3758944
+2024-01-23 15:30:35 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 289 rows and 7 columns.
+This is the metadata of the dataframe dfs[0]:
+키워드,경쟁도,쇼핑전환율,광고비,검색수,상품수,평균가
+별달우주집들이,1318.7,0.0,70,20,26374,65900
+살바도르달리,0.67,0.0,70,17120,11576,34430
+청룡달마도,0.11,5.73,70,7700,863,41000
+</dataframe>
+
+<conversation>
+User: 쇼핑전환율 평균 알려줘
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-01-23 15:30:36 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2024-01-23 15:31:16 [INFO] Question: 광고비 평균 알려줘
+2024-01-23 15:31:16 [INFO] Running PandasAI with openai LLM...
+2024-01-23 15:31:16 [INFO] Prompt ID: 92fd5d50-c8c6-46ed-9a0b-ebe887934e03
+2024-01-23 15:31:16 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 289 rows and 7 columns.
+This is the metadata of the dataframe dfs[0]:
+키워드,경쟁도,쇼핑전환율,광고비,검색수,상품수,평균가
+별달우주집들이,1318.7,0.0,70,20,26374,65900
+청룡달마도,0.11,5.73,70,7700,863,41000
+살바도르달리,0.67,0.0,70,17120,11576,34430
+</dataframe>
+
+<conversation>
+User: 광고비 평균 알려줘
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-01-23 15:31:16 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2024-01-23 15:35:19 [INFO] Question: 광고비 평균 알려줘
+2024-01-23 15:35:19 [INFO] Running PandasAI with openai LLM...
+2024-01-23 15:35:19 [INFO] Prompt ID: 58ad2db9-ca24-4cfc-8e14-7c19ae1ab435
+2024-01-23 15:35:19 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 289 rows and 7 columns.
+This is the metadata of the dataframe dfs[0]:
+키워드,경쟁도,쇼핑전환율,광고비,검색수,상품수,평균가
+별달우주집들이,1318.7,0.0,70,20,26374,65900
+살바도르달리,0.67,0.0,70,17120,11576,34430
+청룡달마도,0.11,5.73,70,7700,863,41000
+</dataframe>
+
+<conversation>
+User: 광고비 평균 알려줘
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-01-23 15:35:41 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-01-23 15:35:41 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Extract the relevant dataframe from the list of dataframes
+    df = dfs[0]
+    
+    # Calculate the average advertising cost
+    avg_ad_cost = df['광고비'].mean()
+    
+    # Return the result as a string
+    result = f"The average advertising cost is {avg_ad_cost}."
+    return {"type": "string", "value": result}
+```
+
+2024-01-23 15:35:41 [INFO] Saving charts to C:\Users\cuckoo\interpreter\PandasAI\temp_chart.png
+2024-01-23 15:35:41 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in C:/Users/cuckoo/interpreter/PandasAI/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "C:/Users/cuckoo/interpreter/PandasAI/temp_chart.png" }
+    """
+    df = dfs[0]
+    avg_ad_cost = df['광고비'].mean()
+    result = f'The average advertising cost is {avg_ad_cost}.'
+    return {'type': 'string', 'value': result}
+        ```
+2024-01-23 15:35:41 [INFO] Answer: {'type': 'string', 'value': 'The average advertising cost is 1089.688581314879.'}
+2024-01-23 15:35:41 [INFO] Executed in: 21.653910875320435s
+2024-01-23 15:36:37 [INFO] Question: 경쟁강도 높은 상위 5개 알려줘
+2024-01-23 15:36:37 [INFO] Running PandasAI with openai LLM...
+2024-01-23 15:36:37 [INFO] Prompt ID: 09af35fa-ae55-4de2-b2c1-38fd6862d439
+2024-01-23 15:36:37 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 289 rows and 7 columns.
+This is the metadata of the dataframe dfs[0]:
+키워드,경쟁도,쇼핑전환율,광고비,검색수,상품수,평균가
+청룡달마도,0.11,5.73,70,7700,863,41000
+별달우주집들이,1318.7,0.0,70,20,26374,65900
+살바도르달리,0.67,0.0,70,17120,11576,34430
+</dataframe>
+
+<conversation>
+User: 경쟁강도 높은 상위 5개 알려줘
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-01-23 15:37:01 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-01-23 15:37:01 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Extract the relevant dataframe from the list
+    df = dfs[0]
+    
+    # Sort the dataframe by the '경쟁도' column in descending order
+    sorted_df = df.sort_values(by='경쟁도', ascending=False)
+    
+    # Select the top 5 rows from the sorted dataframe
+    top_5 = sorted_df.head(5)
+    
+    # Return the top 5 rows as a dataframe
+    return {"type": "dataframe", "value": top_5}
+```
+
+2024-01-23 15:37:01 [INFO] Saving charts to C:\Users\cuckoo\interpreter\PandasAI\temp_chart.png
+2024-01-23 15:37:01 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in C:/Users/cuckoo/interpreter/PandasAI/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "C:/Users/cuckoo/interpreter/PandasAI/temp_chart.png" }
+    """
+    df = dfs[0]
+    sorted_df = df.sort_values(by='경쟁도', ascending=False)
+    top_5 = sorted_df.head(5)
+    return {'type': 'dataframe', 'value': top_5}
+        ```
+2024-01-23 15:37:01 [INFO] Answer: {'type': 'dataframe', 'value':          키워드      경쟁도  쇼핑전환율   광고비    검색수       상품수    평균가
+5      디퓨저2개  2173.60   0.00    70     20     43472  18130
+161   인테리어소품  2139.42   4.67   850  25680  54940478  25340
+261   인테리어조명  1609.37   2.35  2280  10130  16302951  14480
+225   인테리어액자  1391.10   3.40  1550   9030  12561701  34660
+0    별달우주집들이  1318.70   0.00    70     20     26374  65900}
+2024-01-23 15:37:01 [INFO] Executed in: 23.162920713424683s
+2024-01-23 15:48:37 [INFO] Question: 경쟁도 평균 알려줘
+2024-01-23 15:48:37 [INFO] Running PandasAI with openai LLM...
+2024-01-23 15:48:37 [INFO] Prompt ID: b33ea242-3f4e-4d9f-a177-b6bdccd52678
+2024-01-23 15:48:37 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 289 rows and 7 columns.
+This is the metadata of the dataframe dfs[0]:
+키워드,경쟁도,쇼핑전환율,광고비,검색수,상품수,평균가
+청룡달마도,0.11,5.73,70,7700,863,41000
+살바도르달리,0.67,0.0,70,17120,11576,34430
+별달우주집들이,1318.7,0.0,70,20,26374,65900
+</dataframe>
+
+<conversation>
+User: 경쟁도 평균 알려줘
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-01-23 15:48:59 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-01-23 15:49:00 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Extract the relevant dataframe from the list of dataframes
+    df = dfs[0]
+    
+    # Calculate the average competition
+    avg_competition = df['경쟁도'].mean()
+    
+    # Return the result as a string
+    result = f"The average competition is {avg_competition:.2f}."
+    return {"type": "string", "value": result}
+```
+
+2024-01-23 15:49:00 [INFO] Saving charts to C:\Users\cuckoo\interpreter\PandasAI\temp_chart.png
+2024-01-23 15:49:00 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in C:/Users/cuckoo/interpreter/PandasAI/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "C:/Users/cuckoo/interpreter/PandasAI/temp_chart.png" }
+    """
+    df = dfs[0]
+    avg_competition = df['경쟁도'].mean()
+    result = f'The average competition is {avg_competition:.2f}.'
+    return {'type': 'string', 'value': result}
+        ```
+2024-01-23 15:49:00 [INFO] Answer: {'type': 'string', 'value': 'The average competition is 97.68.'}
+2024-01-23 15:49:00 [INFO] Executed in: 22.988443851470947s
+2024-01-23 17:25:01 [INFO] Question: 쇼핑 전환율 평균 알려줘
+2024-01-23 17:25:01 [INFO] Running PandasAI with openai LLM...
+2024-01-23 17:25:01 [INFO] Prompt ID: 3e806ed3-0eb4-4558-8427-a037efd03323
+2024-01-23 17:25:01 [INFO] Executing Step 0: CacheLookup
+2024-01-23 17:25:01 [INFO] Executing Step 1: PromptGeneration
+2024-01-23 17:25:01 [INFO] Using prompt: <dataframe>
+dfs[0]:289x7
+키워드,경쟁도,쇼핑전환율,광고비,검색수,상품수,평균가
+살바도르달리,0.67,0.0,70,17120,11576,34430
+별달우주집들이,1318.7,0.0,70,20,26374,65900
+청룡달마도,0.11,5.73,70,7700,863,41000
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: 쇼핑 전환율 평균 알려줘
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-01-23 17:25:01 [INFO] Executing Step 2: CodeGenerator
+2024-01-23 17:25:06 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-01-23 17:25:06 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+conversion_rate_mean = dfs[0]['쇼핑전환율'].mean()
+
+# Declare result var
+result = {
+    "type": "number",
+    "value": conversion_rate_mean
+}
+            ```
+            
+2024-01-23 17:25:06 [INFO] Executing Step 3: CachePopulation
+2024-01-23 17:25:06 [INFO] Executing Step 4: CodeExecution
+2024-01-23 17:25:06 [INFO] Saving charts to C:\Users\cuckoo\interpreter\PandasAI\exports\charts\temp_chart.png
+2024-01-23 17:25:06 [INFO] 
+Code running:
+```
+conversion_rate_mean = dfs[0]['쇼핑전환율'].mean()
+result = {'type': 'number', 'value': conversion_rate_mean}
+        ```
+2024-01-23 17:25:06 [INFO] Executing Step 5: ResultValidation
+2024-01-23 17:25:06 [INFO] Answer: {'type': 'number', 'value': 1.9638062283737023}
+2024-01-23 17:25:06 [INFO] Executed in: 5.467563152313232s
+2024-01-23 17:25:06 [INFO] Executing Step 6: ResultParsing
+2024-01-23 17:27:43 [INFO] Question: 쇼핑 전환율 평균 알려줘
+2024-01-23 17:27:43 [INFO] Running PandasAI with openai LLM...
+2024-01-23 17:27:43 [INFO] Prompt ID: aebd776c-8363-4b3f-b976-c601ed9e2f33
+2024-01-23 17:27:43 [INFO] Executing Step 0: CacheLookup
+2024-01-23 17:27:43 [INFO] Using cached response
+2024-01-23 17:27:43 [INFO] Executing Step 1: PromptGeneration
+2024-01-23 17:27:43 [INFO] Executing Step 2: CodeGenerator
+2024-01-23 17:27:43 [INFO] Executing Step 3: CachePopulation
+2024-01-23 17:27:43 [INFO] Executing Step 4: CodeExecution
+2024-01-23 17:27:43 [INFO] Saving charts to C:\Users\cuckoo\interpreter\PandasAI\exports\charts\temp_chart.png
+2024-01-23 17:27:43 [INFO] 
+Code running:
+```
+conversion_rate_mean = dfs[0]['쇼핑전환율'].mean()
+result = {'type': 'number', 'value': conversion_rate_mean}
+        ```
+2024-01-23 17:27:43 [INFO] Executing Step 5: ResultValidation
+2024-01-23 17:27:43 [INFO] Answer: {'type': 'number', 'value': 1.9638062283737023}
+2024-01-23 17:27:43 [INFO] Executed in: 0.054453372955322266s
+2024-01-23 17:27:43 [INFO] Executing Step 6: ResultParsing
+2024-01-23 17:27:54 [INFO] Question: 경쟁도 평균 알려줘
+2024-01-23 17:27:54 [INFO] Running PandasAI with openai LLM...
+2024-01-23 17:27:54 [INFO] Prompt ID: faa4c4b0-7c58-438a-9b76-8366336f004d
+2024-01-23 17:27:54 [INFO] Executing Step 0: CacheLookup
+2024-01-23 17:27:54 [INFO] Executing Step 1: PromptGeneration
+2024-01-23 17:27:54 [INFO] Using prompt: <dataframe>
+dfs[0]:289x7
+키워드,경쟁도,쇼핑전환율,광고비,검색수,상품수,평균가
+살바도르달리,0.67,0.0,70,17120,11576,34430
+별달우주집들이,1318.7,0.0,70,20,26374,65900
+청룡달마도,0.11,5.73,70,7700,863,41000
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: 경쟁도 평균 알려줘
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-01-23 17:27:54 [INFO] Executing Step 2: CodeGenerator
+2024-01-23 17:27:58 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-01-23 17:27:58 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+avg_competition = dfs[0]['경쟁도'].mean()
+
+# Declare result var
+result = {
+    "type": "number",
+    "value": avg_competition
+}
+            ```
+            
+2024-01-23 17:27:58 [INFO] Executing Step 3: CachePopulation
+2024-01-23 17:27:58 [INFO] Executing Step 4: CodeExecution
+2024-01-23 17:27:58 [INFO] Saving charts to C:\Users\cuckoo\interpreter\PandasAI\exports\charts\temp_chart.png
+2024-01-23 17:27:58 [INFO] 
+Code running:
+```
+avg_competition = dfs[0]['경쟁도'].mean()
+result = {'type': 'number', 'value': avg_competition}
+        ```
+2024-01-23 17:27:58 [INFO] Executing Step 5: ResultValidation
+2024-01-23 17:27:58 [INFO] Answer: {'type': 'number', 'value': 97.68325259515571}
+2024-01-23 17:27:58 [INFO] Executed in: 4.212223529815674s
+2024-01-23 17:27:58 [INFO] Executing Step 6: ResultParsing
+2024-01-23 17:28:15 [INFO] Question: 경쟁강도가 높은 순으로 정렬해줘
+2024-01-23 17:28:15 [INFO] Running PandasAI with openai LLM...
+2024-01-23 17:28:15 [INFO] Prompt ID: f4a85d0f-b51a-4f26-bbc1-f482e86eda8b
+2024-01-23 17:28:15 [INFO] Executing Step 0: CacheLookup
+2024-01-23 17:28:15 [INFO] Executing Step 1: PromptGeneration
+2024-01-23 17:28:15 [INFO] Using prompt: <dataframe>
+dfs[0]:289x7
+키워드,경쟁도,쇼핑전환율,광고비,검색수,상품수,평균가
+별달우주집들이,1318.7,0.0,70,20,26374,65900
+청룡달마도,0.11,5.73,70,7700,863,41000
+살바도르달리,0.67,0.0,70,17120,11576,34430
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: 경쟁강도가 높은 순으로 정렬해줘
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-01-23 17:28:15 [INFO] Executing Step 2: CodeGenerator
+2024-01-23 17:28:26 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-01-23 17:28:26 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+dfs[0].sort_values(by='경쟁도', ascending=False, inplace=True)
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+result = {"type": "dataframe", "value": dfs[0]}
+            ```
+            
+2024-01-23 17:28:26 [INFO] Executing Step 3: CachePopulation
+2024-01-23 17:28:26 [INFO] Executing Step 4: CodeExecution
+2024-01-23 17:28:26 [INFO] Saving charts to C:\Users\cuckoo\interpreter\PandasAI\exports\charts\temp_chart.png
+2024-01-23 17:28:26 [INFO] 
+Code running:
+```
+dfs[0].sort_values(by='경쟁도', ascending=False, inplace=True)
+result = {'type': 'dataframe', 'value': dfs[0]}
+        ```
+2024-01-23 17:28:26 [INFO] Executing Step 5: ResultValidation
+2024-01-23 17:28:26 [INFO] Answer: {'type': 'dataframe', 'value':          키워드      경쟁도  ...       상품수     평균가
+5      디퓨저2개  2173.60  ...     43472   18130
+161   인테리어소품  2139.42  ...  54940478   25340
+261   인테리어조명  1609.37  ...  16302951   14480
+225   인테리어액자  1391.10  ...  12561701   34660
+0    별달우주집들이  1318.70  ...     26374   65900
+..       ...      ...  ...       ...     ...
+12   교보문고디퓨저     0.04  ...       763   29380
+27       작호도     0.04  ...       243   14840
+47    샤넬스노우볼     0.03  ...       335  118100
+22   위메이크페인팅     0.02  ...       378   27900
+7       그랑핸드     0.00  ...       198   31090
+
+[289 rows x 7 columns]}
+2024-01-23 17:28:26 [INFO] Executed in: 11.148651361465454s
+2024-01-23 17:28:26 [INFO] Executing Step 6: ResultParsing
+2024-01-23 17:29:48 [INFO] Question: 광고비 평균 알려줘
+2024-01-23 17:29:48 [INFO] Running PandasAI with openai LLM...
+2024-01-23 17:29:48 [INFO] Prompt ID: 438f0954-b249-4009-8840-29120832d768
+2024-01-23 17:29:48 [INFO] Executing Step 0: CacheLookup
+2024-01-23 17:29:48 [INFO] Executing Step 1: PromptGeneration
+2024-01-23 17:29:48 [INFO] Using prompt: <dataframe>
+dfs[0]:289x7
+키워드,경쟁도,쇼핑전환율,광고비,검색수,상품수,평균가
+살바도르달리,0.67,0.0,70,17120,11576,34430
+청룡달마도,0.11,5.73,70,7700,863,41000
+별달우주집들이,1318.7,0.0,70,20,26374,65900
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: 광고비 평균 알려줘
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-01-23 17:29:48 [INFO] Executing Step 2: CodeGenerator
+2024-01-23 17:29:53 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-01-23 17:29:53 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+average_ad_cost = dfs[0]['광고비'].mean()
+
+# Declare result var
+result = {
+    "type": "number",
+    "value": average_ad_cost
+}
+            ```
+            
+2024-01-23 17:29:53 [INFO] Executing Step 3: CachePopulation
+2024-01-23 17:29:53 [INFO] Executing Step 4: CodeExecution
+2024-01-23 17:29:53 [INFO] Saving charts to C:\Users\cuckoo\interpreter\PandasAI\exports\charts\temp_chart.png
+2024-01-23 17:29:53 [INFO] 
+Code running:
+```
+average_ad_cost = dfs[0]['광고비'].mean()
+result = {'type': 'number', 'value': average_ad_cost}
+        ```
+2024-01-23 17:29:53 [INFO] Executing Step 5: ResultValidation
+2024-01-23 17:29:53 [INFO] Answer: {'type': 'number', 'value': 1089.688581314879}
+2024-01-23 17:29:53 [INFO] Executed in: 4.977026462554932s
+2024-01-23 17:29:53 [INFO] Executing Step 6: ResultParsing
+2024-01-23 17:32:40 [INFO] Question: 쇼핑 전환율 평균 알려줘
+2024-01-23 17:32:40 [INFO] Running PandasAI with openai LLM...
+2024-01-23 17:32:40 [INFO] Prompt ID: 2876ac38-54f4-4796-897e-d0b226223b1a
+2024-01-23 17:32:40 [INFO] Executing Step 0: CacheLookup
+2024-01-23 17:32:40 [INFO] Using cached response
+2024-01-23 17:32:40 [INFO] Executing Step 1: PromptGeneration
+2024-01-23 17:32:40 [INFO] Executing Step 2: CodeGenerator
+2024-01-23 17:32:40 [INFO] Executing Step 3: CachePopulation
+2024-01-23 17:32:40 [INFO] Executing Step 4: CodeExecution
+2024-01-23 17:32:40 [INFO] Saving charts to C:\Users\cuckoo\interpreter\PandasAI\exports\charts\temp_chart.png
+2024-01-23 17:32:40 [INFO] 
+Code running:
+```
+conversion_rate_mean = dfs[0]['쇼핑전환율'].mean()
+result = {'type': 'number', 'value': conversion_rate_mean}
+        ```
+2024-01-23 17:32:40 [INFO] Executing Step 5: ResultValidation
+2024-01-23 17:32:40 [INFO] Answer: {'type': 'number', 'value': 1.9638062283737023}
+2024-01-23 17:32:40 [INFO] Executed in: 0.11117863655090332s
+2024-01-23 17:32:40 [INFO] Executing Step 6: ResultParsing
+2024-01-23 17:32:48 [INFO] Question: 검색수 평균 알려줘
+2024-01-23 17:32:48 [INFO] Running PandasAI with openai LLM...
+2024-01-23 17:32:48 [INFO] Prompt ID: 58ce7c44-f42c-4e48-a07d-4f34c5d83631
+2024-01-23 17:32:48 [INFO] Executing Step 0: CacheLookup
+2024-01-23 17:32:48 [INFO] Executing Step 1: PromptGeneration
+2024-01-23 17:32:48 [INFO] Using prompt: <dataframe>
+dfs[0]:289x7
+키워드,경쟁도,쇼핑전환율,광고비,검색수,상품수,평균가
+살바도르달리,0.67,0.0,70,17120,11576,34430
+별달우주집들이,1318.7,0.0,70,20,26374,65900
+청룡달마도,0.11,5.73,70,7700,863,41000
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: 검색수 평균 알려줘
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-01-23 17:32:48 [INFO] Executing Step 2: CodeGenerator
+2024-01-23 17:32:52 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-01-23 17:32:52 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+search_avg = dfs[0]['검색수'].mean()
+
+# Declare result var
+result = {
+    "type": "number",
+    "value": search_avg
+}
+            ```
+            
+2024-01-23 17:32:52 [INFO] Executing Step 3: CachePopulation
+2024-01-23 17:32:52 [INFO] Executing Step 4: CodeExecution
+2024-01-23 17:32:52 [INFO] Saving charts to C:\Users\cuckoo\interpreter\PandasAI\exports\charts\temp_chart.png
+2024-01-23 17:32:52 [INFO] 
+Code running:
+```
+search_avg = dfs[0]['검색수'].mean()
+result = {'type': 'number', 'value': search_avg}
+        ```
+2024-01-23 17:32:52 [INFO] Executing Step 5: ResultValidation
+2024-01-23 17:32:52 [INFO] Answer: {'type': 'number', 'value': 23775.017301038064}
+2024-01-23 17:32:52 [INFO] Executed in: 4.5318920612335205s
+2024-01-23 17:32:52 [INFO] Executing Step 6: ResultParsing
