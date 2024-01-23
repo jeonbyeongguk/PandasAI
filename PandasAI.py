@@ -8,8 +8,7 @@ import time
 
 load_dotenv()
 
-API_KEY = "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"
-# API_KEY = os.environ['OPENAI_API_KEY']
+API_KEY = st.secrets["OPENAI_API_KEY"]
 
 llm = OpenAI(api_token=API_KEY)
 
