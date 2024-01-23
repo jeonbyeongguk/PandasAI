@@ -1,0 +1,65 @@
+2024-01-23 14:56:26 [INFO] Question: 광고비 평균가격 알려줘
+2024-01-23 14:56:26 [INFO] Running PandasAI with openai LLM...
+2024-01-23 14:56:26 [INFO] Prompt ID: 032e1acf-494e-4c64-b47b-1724debb659a
+2024-01-23 14:56:26 [INFO] Executing Step 0: CacheLookup
+2024-01-23 14:56:26 [INFO] Executing Step 1: PromptGeneration
+2024-01-23 14:56:26 [INFO] Using prompt: <dataframe>
+dfs[0]:289x7
+키워드,경쟁도,쇼핑전환율,광고비,검색수,상품수,평균가
+청룡달마도,0.11,5.73,70,7700,863,41000
+살바도르달리,0.67,0.0,70,17120,11576,34430
+별달우주집들이,1318.7,0.0,70,20,26374,65900
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: 광고비 평균가격 알려줘
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-01-23 14:56:26 [INFO] Executing Step 2: CodeGenerator
+2024-01-23 14:56:34 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+df = dfs[0]
+average_ad_cost = df['광고비'].mean()
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+result = {
+    "type": "number",
+    "value": average_ad_cost
+}
+            ```
+            
+2024-01-23 14:56:34 [INFO] Executing Step 3: CachePopulation
+2024-01-23 14:56:34 [INFO] Executing Step 4: CodeExecution
+2024-01-23 14:56:34 [INFO] Saving charts to C:\Users\cuckoo\interpreter\PandasAI\exports\charts\temp_chart.png
+2024-01-23 14:56:35 [INFO] 
+Code running:
+```
+df = dfs[0]
+average_ad_cost = df['광고비'].mean()
+result = {'type': 'number', 'value': average_ad_cost}
+        ```
+2024-01-23 14:56:35 [INFO] Executing Step 5: ResultValidation
+2024-01-23 14:56:35 [INFO] Answer: {'type': 'number', 'value': 1089.688581314879}
+2024-01-23 14:56:35 [INFO] Executed in: 8.906922578811646s
+2024-01-23 14:56:35 [INFO] Executing Step 6: ResultParsing
