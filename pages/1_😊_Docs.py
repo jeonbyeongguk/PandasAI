@@ -5,52 +5,30 @@ import streamlit as st
 # 페이지 기본 설정
 st.set_page_config(
     page_icon="🐼",
-    page_title="PandasAI prompt data analysis",
+    page_title="Docs",
     layout="wide",
 )
 
 # 제목 생성
-st.subheader("도큐먼트")
+st.subheader("Pandas AI 코드 예시")
 
-if st.button("app.py 코드 보기"):
+if st.button("소스 코드 보기"):
     code = '''
-    import streamlit as st
     import pandas as pd
-    import numpy as np
-    from PIL import Image
-    from time import sleep
-
-
-    # 페이지 기본 설정
-  st.set_page_config(
-      page_icon="🐶",
-      page_title="빅공잼의 스트림릿 배포하기",
-      layout="wide",
-  )
-
-  # 로딩바 구현하기
-  with st.spinner(text="페이지 로딩중..."):
-      sleep(3)
-
-  # 페이지 헤더, 서브헤더 제목 설정
-  st.header("빅공잼 페이지에 오신걸 환영합니다👋")
-  st.subheader("스트림릿 기능 맛보기")
-
-  # 페이지 컬럼 분할(예: 부트스트랩 컬럼, 그리드)
-  cols = st.columns((1, 1, 2))
-  cols[0].metric("10/11", "15 °C", "2")
-  cols[0].metric("10/12", "17 °C", "2 °F")
-  cols[0].metric("10/13", "15 °C", "2")
-  cols[1].metric("10/14", "17 °C", "2 °F")
-  cols[1].metric("10/15", "14 °C", "-3 °F")
-  cols[1].metric("10/16", "13 °C", "-1 °F")
-
-  # 라인 그래프 데이터 생성(with. Pandas)
-  chart_data = pd.DataFrame(
-      np.random.randn(20, 3),
-      columns=['a', 'b', 'c'])
-
-  # 컬럼 나머지 부분에 라인차트 생성
-  cols[2].line_chart(chart_data)
+    from pandasai import SmartDataframe
+    
+    # Sample DataFrame
+    df = pd.DataFrame({
+        "country": ["United States", "United Kingdom", "France", "Germany", "Italy", "Spain", "Canada", "Australia", "Japan", "China"],
+        "gdp": [19294482071552, 2891615567872, 2411255037952, 3435817336832, 1745433788416, 1181205135360, 1607402389504, 1490967855104, 4380756541440, 14631844184064],
+        "happiness_index": [6.94, 7.16, 6.66, 7.07, 6.38, 6.4, 7.23, 7.22, 5.87, 5.12]
+    })
+    
+    # Instantiate a LLM
+    from pandasai.llm import OpenAI
+    llm = OpenAI(api_token="YOUR_API_TOKEN")
+    
+    df = SmartDataframe(df, config={"llm": llm})
+    df.chat('Which are the 5 happiest countries?')
     '''
     st.code(code, language='python')
