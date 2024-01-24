@@ -37,10 +37,11 @@ if uploaded_file is not None:
             # Excel 파일 읽기
             df = pd.read_excel(uploaded_file)
         else:
-            st.warning("Unsupported file format. Please upload a CSV or Excel file.")
+            st.warning("지원하지 않는 파일 포맷입니다. CSV or Excel 파일을 올려주세요.")
             st.stop()
     except UnicodeDecodeError:
-        st.error("Error decoding the file. Please check the file's encoding.")
+        st.error("이 형식의 파일은 업로드가 되지 않습니다. .xlsx 파일로 변환해서 올려주세요.")
+        st.error("변환 사이트: https://convertio.co/kr/csv-xlsx/")
         st.stop()
     
     # 데이터 프레임 확장
