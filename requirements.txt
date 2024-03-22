@@ -3,3 +3,4 @@ pandasai
 streamlit==1.28.2
 seaborn 
 openpyxl
+pyyaml
